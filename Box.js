@@ -1,7 +1,7 @@
 class Box extends Baseclass {
   constructor(x, y){
     super(x, y, 40, 40);
-    this.image = loadImage("OCrVvq.jpg");
+    this.image = loadImage("OaD3bWV.jpg");
     this.visibility = 255;
   }
   score(){

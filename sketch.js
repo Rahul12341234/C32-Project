@@ -7,6 +7,13 @@ var ball, stand, stand1, ground, slingshot;
 var box, box1, box2, box3, box4, box5, box6, box7, box8, box9;
 var box10, box11, box12, box13, box14, box15, box16, box17, box18, box19;
 var score = 0;
+var timeImg;
+var tm;
+
+function preload(){
+  getbgimg();
+}
+
 function setup() {
   createCanvas(1200,600);
   engine = Engine.create();
@@ -29,10 +36,11 @@ function setup() {
   box9 = new Box(950, 210);
 }
 function draw() {
-  background("gray");
+  if (timeImg)
+  background(timeImg);
   Engine.update(engine);
   fill(0);
-  text("Score: " + score, 750, 40)
+  text("Score: " + score, 750, 40);
   ground.display();
   stand.display();
   stand1.display();
@@ -74,4 +82,18 @@ function keyPressed(){
     Matter.Body.setPosition(ball.body, {x: 300, y: 300});
     Matter.Body.setVelocity(ball.body, {x: 0, y: 0});
   }
+}
+
+async function getbgimg(){
+  var response =  await fetch("http://worldtimeapi.org/api/timezone/America/New_York");
+  var responseJSON = await response.json();
+  var datetime = responseJSON.datetime;
+  var hour = datetime.slice(11,13);
+  if (hour >= 06 && hour <= 19){
+      tm = "OCrVvq.jpg";
+  }
+  else{
+      tm = "1.jpg";
+  }
+  timeImg = loadImage(tm);
 }
