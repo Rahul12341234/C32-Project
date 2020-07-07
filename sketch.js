@@ -6,7 +6,7 @@ const Constraint = Matter.Constraint;
 var ball, stand, stand1, ground, slingshot;
 var box, box1, box2, box3, box4, box5, box6, box7, box8, box9;
 var box10, box11, box12, box13, box14, box15, box16, box17, box18, box19;
-
+var score = 0;
 function setup() {
   createCanvas(1200,600);
   engine = Engine.create();
@@ -31,6 +31,8 @@ function setup() {
 function draw() {
   background("gray");
   Engine.update(engine);
+  fill(0);
+  text("Score: " + score, 750, 40)
   ground.display();
   stand.display();
   stand1.display();
@@ -46,6 +48,16 @@ function draw() {
   box7.display();
   box8.display();
   box9.display();
+  box.score();
+  box1.score();
+  box2.score();
+  box3.score();
+  box4.score();
+  box5.score();
+  box6.score();
+  box7.score();
+  box8.score();
+  box9.score();
 }
 
 function mouseDragged(){
